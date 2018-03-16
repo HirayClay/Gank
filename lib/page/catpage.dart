@@ -106,10 +106,14 @@ class CategoryState extends State<CategoryPage> {
         color: Colors.grey.shade200.withOpacity(0.3),
         borderRadius: new BorderRadius.circular(5.0),
       ),
-      child: new Image.network(data[index]['url'], scale: 2.0,),
+      child: getImage(index),
     );
   }
 
+  getImage(int index){
+    print('${data[index]['url']}');
+    return new Image.network(data[index]['url'], scale: 2.0,);
+  }
 }
 
 class ItemView extends StatefulWidget {
@@ -139,6 +143,8 @@ class ItemViewState extends State<ItemView> {
   Dialog dialog;
 
   Future dialogDismissRef;
+
+  var imgHolder='http://iconfont.alicdn.com/t/1516429577407.png@200h_200w.jpg';
 
 
   @override
@@ -171,7 +177,7 @@ class ItemViewState extends State<ItemView> {
                 child: new InkWell(
                   child: new CircleAvatar(
                     backgroundImage: new NetworkImage(
-                        '${widget.type == '福利' ? widget.url : ''}', scale: 1.5
+                        '${widget.type == '福利' ? widget.url : imgHolder}', scale: 1.2
                     ),
                     radius: 20.0,
                   ),
